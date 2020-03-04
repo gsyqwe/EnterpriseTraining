@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <h1>{{title}}</h1>
+    <p>{{`共${fruits.length}个`}}</p>
+    <p>
+        {{fruits.join('/')}}
+    </p>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el: '#box',
+        data: {
+            title: '水果',
+            fruits: ['苹果','西瓜','桔子']
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <!-- 可以用 v-bind 进行属性绑定 -->
+    <div v-bind:id="id">{{message}}</div>
+    <!-- 使用v-model进行双向数据绑定 -->
+    <input type="text" v-model="message"/>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+<script>
+    let app = new Vue({
+        //让vue实例和id为demo的dom元素绑定
+        el: '#box',
+        data: {
+            id: '001',
+            message: ''
+        }
+    })
+</script>
+</html>

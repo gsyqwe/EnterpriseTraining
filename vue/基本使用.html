@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 这个div就是vue实例的挂载点，vue实例只会处理挂载点里面的内容-->
+<div id="demo">
+    {{message}}
+</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+<script>
+    let app = new Vue({
+        //让vue实例和id为demo的dom元素绑定
+        el: '#demo',
+        //vue实例的数据
+        data: {
+            message: 'hello world'
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <!--    根据表达式的真假值，切换元素的 display CSS 属性，如果为false，
+    则在元素上添加 display:none来隐藏元素，否则移除display:none实现显示元素-->
+    <div v-show="isShow">看见吗</div>
+    <!--根据表达式的值的真假条件来决定是否渲染元素，如果条件为false不渲染（达到隐藏元素的目的），为true则渲染。-->
+    <div v-if="isShow">你好</div>
+    <ul>
+        <li v-for="item,index in books">
+            {{index+1}}.{{item.title}}
+        </li>
+    </ul>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#box',
+        data: {
+            isShow: false,
+            books: [
+                {'title': 'Vue从入门到放弃'},
+                {'title': 'Java从入门到放弃'},
+                {'title': 'Mysql从入门到放弃'}
+            ]
+        }
+    })
+</script>
+</html>

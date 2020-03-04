@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <!--v-text可以将一个变量的值到指定的元素中-->
+    <div v-text="message"></div>
+    <!-- 为了输出真正的 HTML ，你需要使用 v-html 指令-->
+    <div v-html="message"></div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#box',
+        data: {
+            message: '<strong>这是一段文字</strong>'
+        }
+    })
+</script>
+</html>

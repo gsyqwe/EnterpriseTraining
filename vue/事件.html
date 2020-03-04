@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <!-- 可以用 v-on 指令监听 DOM 事件来触发一些 JavaScript 代码 -->
+    <div v-on:click="handleClick">{{message}}</div>
+    <!-- @click触发单击事件-->
+    <div @click="handleClick">{{message}}</div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#box',
+        data: {
+            message: '点击我'
+        },
+        //所有的方法,定义在methods里面
+        methods: {
+            handleClick(){
+                this.message = '你好,准备下课'
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+    <div id="box">
+        <!--<item />-->
+        <todo-item v-bind:message="show"></todo-item>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+<script>
+    //全局组件
+    //每一个组件也是一个Vue实例
+    Vue.component(
+        'item',{
+            template: '<h2>这是一条新闻</h2>'
+        }
+    )
+    Vue.component(
+        'todo-item',{
+            props: ['message'],
+            template: '<h2>{{message}}</h2>'
+        }
+    )
+    let app = new Vue({
+        //让vue实例和id为demo的dom元素绑定
+        el: '#box',
+        data: {
+            show: '你好吗'
+        }
+    })
+</script>
+</html>

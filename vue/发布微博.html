@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        textarea{
+            width: 400px;
+            height: 100px;
+            border: 1px solid #000;
+            resize: none;
+            outline: none;
+        }
+        ul li{
+            margin-top:5px;
+            background: orange;
+            line-height: 40px;
+            width: 500px;
+        }
+        span{
+            float: right;
+            cursor: pointer;
+            background: red;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+        }
+        button{
+            padding: 10px 20px;
+            background: #f60;
+            color: #fff;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>
+            <textarea v-model="content"></textarea>
+            <button @click="handleSend">发布</button>
+        </p>
+        <ul>
+            <li v-for="item,index in records">{{item}}<span @click="handleDel(index)">X</span></li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#box',
+        data: {
+            content: '', //发布的内容
+            records: []  //所有微博信息
+        },
+        methods: {
+            //发布
+            handleSend(){
+                //如果有输入内容,则加入数组
+                if(this.content.length>0) this.records.push(this.content)
+            },
+            //删除
+            handleDel(index){
+                //从数组中删除索引是index的元素
+                this.records.splice(index,1)
+            }
+        }
+
+    })
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        li{
+            border: 1px solid #000;
+            width: 200px;
+            float: left;
+            margin-right: 20px;
+
+        }
+        ul{
+            background: pink;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <h1>{{record.title}}</h1>
+  <ul>
+      <li v-for="item in record.list">
+          <img :src="item.src" />
+          <h3>{{item.des}}</h3>
+          <p>{{item.price}}</p>
+      </li>
+  </ul>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+<script>
+    let app = new Vue({
+        //让vue实例和id为demo的dom元素绑定
+        el: '#box',
+        data: {
+            record: {
+                title: '潮流时装',
+                list: [
+                    {
+                        src:'img/pic01.png',
+                        des:'[希夏邦马]潮酷型人系列手提双肩背包',
+                        price:169
+                    },
+                    {
+                        src:'img/pic02.png',
+                        des:'[希夏邦马]潮酷型人系列手提双肩背包',
+                        price:190
+                    },
+                    {
+                        src:'img/pic03.png',
+                        des:'[希夏邦马]潮酷型人系列手提双肩背包',
+                        price:190
+                    },
+                    {
+                        src:'img/pic04.png',
+                        des:'[希夏邦马]潮酷型人系列手提双肩背包',
+                        price:190
+                    },
+                    {
+                        src:'img/pic04.png',
+                        des:'[希夏邦马]潮酷型人系列手提双肩背包',
+                        price:190
+                    },
+                    {
+                        src:'img/pic04.png',
+                        des:'[希夏邦马]潮酷型人系列手提双肩背包',
+                        price:190
+                    },
+                    {
+                        src:'img/pic04.png',
+                        des:'[希夏邦马]潮酷型人系列手提双肩背包',
+                        price:190
+                    }
+                ]
+            }
+        }
+
+    })
+</script>
+</html>

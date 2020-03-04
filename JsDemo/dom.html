@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">测试一下</div>
+<div name="box">123</div>
+<div>睛天</div>
+<div>
+    <ul id="news">
+        <li>新闻一</li>
+        <li>新闻二</li>
+        <li>新闻三</li>
+    </ul>
+</div>
+<div>
+    <input type="text" id="content"/>
+    <button type="button" onclick="add()">添加</button>
+</div>
+</body>
+<script>
+    window.onload = function(){
+        var show = document.getElementById("box").innerHTML
+        console.log(show)
+        document.getElementById("box").innerHTML = "你好"
+
+        var div = document.getElementsByTagName("div")[0];
+        console.log(div)
+
+        var box = document.getElementsByName("box")[0];
+        console.log(box)
+
+        var ul = document.getElementById("news")
+        console.log(ul)
+        //遍历ul所有的li
+        var lis = ul.children
+        for(var i=0;i<lis.length;i++){
+            console.log(lis[i])
+        }
+        //ul下第一个li
+        var first = ul.firstElementChild
+        console.log(first)
+        var next = first.nextElementSibling
+        console.log(next)
+    }
+
+    function add(){
+        var content = document.getElementById("content").value
+        //创建li对象
+        var li = document.createElement("li");
+        li.innerHTML = content
+        console.log(li)
+
+        var ul = document.getElementById("news")
+        ul.appendChild(li)
+    }
+</script>
+</html>

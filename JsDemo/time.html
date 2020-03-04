@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap {
+            width: 500px;
+            height: 300px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .wrap .time {
+            margin-top: 10px;
+            padding: 20px;
+            border: 1px solid #a9a9a9;
+            font-size: 20px;
+            text-align: center;
+            background-color: #ff9f46;
+            color: #fff;
+        }
+    </style>
+</head>
+<body onload="show()">
+<div class="wrap">
+<form name="frm">
+    <input type="text" name="time" class="time"/>
+</form>
+</div>
+</body>
+<script>
+    function show(){
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = (date.getMonth() + 1).toString();
+        var day = date.getDate().toString();
+        var hour = date.getHours().toString();
+        var min = date.getMinutes().toString();
+        var sec = date.getSeconds().toString();
+        month = month.length<2?"0"+month:month
+        day = day.length<2?"0"+day:day
+        hour = hour.length<2?"0"+hour:hour
+        min = min.length<2?"0"+min:min
+        sec = sec.length<2?"0"+sec:sec
+        var result = year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
+        document.frm.time.value = result
+        setTimeout(show,1000)
+    }
+</script>
+</html>

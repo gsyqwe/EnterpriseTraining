@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+
+    
+<mapper namespace="StudentInfo">
+
+	<!--类的属性名和字段名的映射-->
+	<resultMap id="studentInfoMap" type="com.neusoft.jdbc.StudentInfo">
+		<id property="id" column="id"></id>
+		<result property="name" column="name"></result>
+		<result property="sex" column="sex"></result>
+		<result property="birthday" column="birthday"></result>
+		<result property="score" column="score"></result>
+		<result property="address" column="address"></result>
+		<!--一对一关联-->
+		<!--property:一对一关联的对象属性名
+		    column:两张表关联的关联字段名
+		    javatype:一对一关联的对象属性名的类名-->
+		<association property="college" column="college_id" javaType="College">
+		    <id property="id" column="cid"></id>
+		    <result property="name" column="cname"></result>
+			<result property="address" column="caddress"></result>
+			<result property="phone" column="phone"></result>
+		</association>
+	</resultMap>
+
+	<select id="selOne" parameterType="Integer" resultMap="studentInfoMap">
+		select s.id,s.name,s.sex,s.birthday,s.score,s.address,
+		c.id cid,c.name cname,c.address caddress,c.phone
+		from students s
+		inner join colleges c on s.college_id=c.id
+		where s.id=#{id}
+	</select>
+  	  	
+</mapper>

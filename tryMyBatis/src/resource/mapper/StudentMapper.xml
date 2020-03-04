@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="Student">
+
+    <!--类的属性名和字段名的映射-->
+    <resultMap id="studentMap" type="com.neusoft.jdbc.Student">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="sex" column="sex"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="score" column="score"></result>
+        <result property="address" column="address"></result>
+    </resultMap>
+
+
+    <insert id="add" parameterType="com.neusoft.jdbc.Student">
+		insert into students(name,sex,birthday,score,address)
+		values(#{name},#{sex},#{birthday},#{score},#{address})
+	</insert>
+
+    <select id="sel" parameterType="Integer" resultMap="studentMap">
+		select id,name,sex,birthday,score,address from students where id=#{id}
+	</select>
+
+    <select id="selAll" resultMap="studentMap">
+		select id,name,sex,birthday,score,address from students
+	</select>
+
+    <update id="update" parameterType="com.neusoft.jdbc.Student">
+		update students set name=#{name},sex=#{sex},birthday=#{birthday},score=#{score},
+		address=#{address} where id=#{id}
+	</update>
+
+    <delete id="del" parameterType="Integer">
+		delete from students where id=#{id}
+	</delete>
+
+
+
+</mapper>

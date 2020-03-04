@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CollegeInfo">
+    <!--类的属性名和字段名的映射-->
+    <resultMap id="collegeMap" type="College">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="address" column="address"></result>
+        <result property="phone" column="phone"></result>
+    </resultMap>
+
+    <resultMap id="collegeInfoMap" type="College">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="address" column="address"></result>
+        <result property="phone" column="phone"></result>
+        <collection property="studentList" ofType="Student">
+            <id property="id" column="sid"></id>
+            <result property="name" column="sname"></result>
+            <result property="sex" column="sex"></result>
+            <result property="birthday" column="birthday"></result>
+            <result property="score" column="score"></result>
+            <result property="address" column="saddress"></result>
+        </collection>
+    </resultMap>
+
+
+    <insert id="add" parameterType="College">
+		insert into colleges(name,address,phone)
+		values(#{name},#{address},#{phone})
+	</insert>
+
+    <!--1对多的查询-->
+    <select id="selStudents" parameterType="Integer" resultMap="collegeInfoMap">
+        select c.id,c.name,c.address,c.phone,
+		s.id sid,s.name sname,s.sex,s.birthday,s.score,s.address saddress
+		from colleges c
+		inner join students s on c.id=s.college_id
+		where c.id=#{id}
+    </select>
+
+    <select id="sel" parameterType="Integer" resultMap="collegeMap">
+		select id,name,address,phone from colleges where id=#{id}
+	</select>
+
+    <select id="selAll" resultMap="collegeMap">
+		select id,name,address,phone from colleges
+	</select>
+
+    <update id="update" parameterType="College">
+		update colleges set name=#{name},address=#{address},phone=#{phone} where id=#{id}
+	</update>
+
+    <delete id="del" parameterType="Integer">
+		delete from colleges where id=#{id}
+	</delete>
+
+</mapper>

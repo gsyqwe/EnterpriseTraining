@@ -1,0 +1,16 @@
+{
+  "name": "张三",
+  "sex":0,
+  "score": 77.6,
+  "address": "南京",
+  "coure": [
+    {
+      "name": "语文",
+      "grade": 99
+    },
+    {
+      "name": "数学",
+      "grade": 88
+    }
+  ]
+}
